@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider with Three Settings</title>
+    <style>
+
+        .slider-container {
+            text-align: center;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 300px;
+            height: 15px;
+            background: #ddd;
+            border-radius: 5px;
+            outline: none;
+            opacity: 0.7;
+            transition: opacity .2s;
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            background: #0056b3;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            background: #007BFF;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .settings {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <input type="range" min="1" max="3" value="2" class="slider" id="mySlider" step="1">
+        <p>Summary length: <span id="sliderValue">Medium</span></p>
+    </div>
+
+    <script>
+        const slider = document.getElementById("mySlider");
+        const sliderValue = document.getElementById("sliderValue");
+
+        const settings = ["Short", "Medium", "Long"];
+
+        slider.addEventListener("input", function() {
+            sliderValue.textContent = settings[slider.value - 1];
+        });
+
+        // Initialize the display with the default value
+        sliderValue.textContent = settings[slider.value - 1];
+    </script>
+</body>
+</html>
